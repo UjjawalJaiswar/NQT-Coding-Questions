@@ -1,3 +1,4 @@
+//Problem Statement: Given an array of n size, rotate the array by k elements 
 #include<bits/stdc++.h>
 using namespace std;
 
