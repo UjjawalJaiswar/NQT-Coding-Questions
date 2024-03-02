@@ -1,3 +1,4 @@
+//Problem Statement: Given an array that contains both negative and positive integers, find the maximum product subarray.
 #include<bits/stdc++.h>
 using namespace std;
 int maxprodsubarr(vector<int>&arr,int size)
