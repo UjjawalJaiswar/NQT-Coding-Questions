@@ -9,8 +9,8 @@ int maxprodsubarr(vector<int>&arr,int size)
             pre =1;
         if(suff==0)
             suff= 1;
-        pre = *arr[i];
-        suff = *arr[n-i-1];
+        pre = pre*arr[i];
+        suff =suff* arr[size-i-1];
         ans = max(pre,suff);
     }
     return ans;
@@ -20,12 +20,13 @@ int main()
 {
     int size,ans;
     vector<int> arr;
-    cout<<"Enter the size of array:";
+    cout<<"Enter the size of array:"<<endl;
     cin>>size;
-    cout<<endl<<"Enter the elements of array:"<<endl;
+    cout<<"Enter the elements of array:"<<endl;
     for(int i =0 ; i<size;i++)
     {
         int num;
+        cin>>num;
         arr.push_back(num);
     }
     ans = maxprodsubarr(arr, size);
