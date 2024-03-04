@@ -1,42 +1,35 @@
-
 #include<bits/stdc++.h>
 using namespace std;
 
-static bool cmp(pair<int,int>&a,pair<int,int>&b)
-{
-    if (a.second==b.second)
+bool cmp(pair<int,int>&a, pair<int,int>&b) {
+    if(a.second == b.second)
         return a.first<b.first;
     return a.second>b.second;
 }
-vector<int> sortbyfreq(int arr[],int n)
-{
-    vector <pair <int,int>> ans;
-    unordered_map<int,int>umap;
-    for(int i =0 ; i<n;i++)
-    {
-        umap[arr[i]]++;
+
+void solve(vector<int> arr, int n){
+    unordered_map<int,int>m;
+    for(int i = 0; i<n;i++) {
+        m[arr[i]]++;
     }
-    for(int i = 0 ;i<n;i++)
-        ans.push_back({arr[i],umap[arr[i]]});
-    sort(ans.begin(),ans.end(),cmp);
-    vector<int> v;
-    for(int i = 0;i<n;i++)
-    {
-        v.push_back(ans[i].first);
+    int size = m.size();
+    pair<int, int> p[size];
+    int i = 0;
+    for(auto it = m.begin();it !=m.end();it++) {
+        p[i++] = make_pair(it->first, it->second);
     }
-    return v;
+    sort(p,p+size, cmp);
+    for(int i=0;i<size;i++) {
+        int freq = p[i].second;
+        while (freq--) {
+            cout<<p[i].first<<" ";
+        }
+    }
 }
-int main()
-{
-    int n;
-    cout<<"Enter the size of array:"<<endl;
-    cin>>n;
-    int a[n];
-    for(int i = 0 ; i<n;i++)
-    {
-        cin>>a[i];
-    }
-    vector<int> freq;
-    freq = sortbyfreq(a, n);
+
+int main() {
+    vector<int>v = {1,2,3,2,4,3,1,2};
+    int n = 8;
+    solve(v,n);
     return 0;
 }
